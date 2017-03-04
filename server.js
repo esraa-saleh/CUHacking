@@ -26,7 +26,18 @@ function route(url, res) {
 	var filename = ROOT+url.pathname;
 	if (url.pathname == '/') {
 		filename = ROOT+'/index.html';
+		writeFile(filename, res);
+	} else if (url.pathname == '/planets') {
+		console.log('here');
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write('<h1>Done</h1>');
+	} else {
+		writeFile(filename, res);
 	}
+	return res;
+}
+
+function writeFile(filename, res) {
 	res.writeHead(200, {'Content-Type': mime.lookup(filename)});
 	res.write(fs.readFileSync(filename));
 	console.log(filename);

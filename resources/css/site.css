@@ -6,6 +6,24 @@ html, body {
 	height: 100%;
 }
 
+#tabs {
+	height: 2em;
+	width: 100%;
+	padding: 0;
+	margin-top 0;
+}
+
+#tabs li {
+	display: inline;
+	height: 2em;
+	line-height:2em;
+	text-align: center;
+}
+
+#tabs li:hover {
+	background-color: white;
+}
+
 #view {
 	background-color: darkBlue;
 	display: block;
