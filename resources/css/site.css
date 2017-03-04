@@ -1,0 +1,17 @@
+html, body {
+	height: 100%;
+}
+
+.pure-g {
+	height: 100%;
+}
+
+#view {
+	background-color: darkBlue;
+	display: block;
+}
+
+#sidebar {
+	background-color: red;
+	display: block;
+}
