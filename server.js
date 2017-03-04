@@ -28,7 +28,6 @@ function route(url, res) {
 		filename = ROOT+'/index.html';
 		writeFile(filename, res);
 	} else if (url.pathname == '/planets') {
-		console.log('here');
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write('<h1>Done</h1>');
 	} else {
