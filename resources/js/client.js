@@ -14,7 +14,7 @@ $(document).ready(function () {
 		$.ajax({
 			method: "GET",
 			url: "/lists",
-			data: {"tempurature": parameter},
+			data: {"aFilter": parameter},
 			success: function(data) {console.log(data)},
 		});
 	});
