@@ -16,7 +16,9 @@ $(document).ready(function () {
 			method: "GET",
 			url: "/lists",
 			data: {"aFilter": parameter},
-			success: function(data) {console.log(data)},
+			success: function(data) {
+				selectedJSstars = data.list;
+			},
 		});
 	});
 	countPlanets();
