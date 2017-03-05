@@ -1,0 +1,78 @@
+$darkest: #1A163B;
+$red    : #FA4A50;
+$orange : #FB784C;
+$yellow : #F3D56D;
+$light-yellow: #FCF398;
+$blue   : #83BCB5;
+$light-blue  : #C0E2C3;
+$aqua   : #68E4BF;
+
+html, body {
+	height: 100%;
+}
+
+.pure-g {
+	height: 100%;
+	margin-top: 0;
+}
+
+#tabs {
+	height: 2em;
+	padding: 0;
+	margin-top: 0;
+	li {
+		display: inline;
+		height: 2em;
+		line-height:2em;
+		text-align: center;
+		margin-top: 0;
+		border-radius: 10px 10px 0 0;
+		a, a:visited {
+			text-decoration: none;
+			color: $darkest;
+		}
+		&:hover {
+			background-color: $light-yellow;
+		}
+
+	}
+}
+
+.active {
+	background-color: $light-yellow;
+}
+
+#view {
+	background-color: $darkest;
+	display: block;
+}
+
+#sidebar {
+	background-color: $blue;
+	display: block;
+	border-left: 1em solid $red;
+	box-sizing: border-box;
+}
+
+#filters, #list {
+	ul {
+		margin: 0;
+		width: 100%;
+		padding: 0;
+	}
+	li {
+		float: left;
+		width: 100%;
+		padding-left: 0.5em;
+		list-style-type: none;
+		height: 2.5em;
+		line-height: 2.5em;
+		&:hover {
+			background-color: $light-yellow;
+		}
+	}
+}
+
+#list {
+	display: none;
+}

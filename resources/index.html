@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charsest=utf-8"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquiery/3.1.0/jquery.min.js"></script>
+	<script src="./js/jquery-3.1.1.js"></script>
 	<script src="./js/client.js"> </script>
 	<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
 	<script src="./js/processing.js"></script>
@@ -19,16 +19,21 @@
 
 		<div id="sidebar" class="pure-u-1-5">
 			<ul id="tabs" class="pure-g">
-				<li class="pure-u-1-2 tablinks" id="filters-tab"><a href="#filters">Filters</a></li>
+				<li class="pure-u-1-2 tablinks active" id="filters-tab"><a href="#filters">Filters</a></li>
 				<li class="pure-u-1-2 tablinks" id="list-tab"><a href="#list">List</a></li>
 			</ul>
 			<div id="filters" class="tabcontent">
-				<ul>
-					<li>filters 1</li>
-					<li>filters 2</li>
-					<li>filters 3</li>
-					<li>filters 4</li>
-				</ul>
+				<form id="filter-form"> <ul>
+					
+					<li><input type="checkbox" name="aFilter" id="mass" value="mass"/>
+					<label for="mass">Mass</label></li>
+					<li><input type="checkbox" name="aFilter" id="distance" value="distance"/>
+					<label for="distance">Distance From Earth</label></li>
+					<li><input type="checkbox" name="aFilter" id="period" value="period"/>
+					<label for="period">Period</label></li>
+					<li><input type="checkbox" name="aFilter" id="proximity" value="proximity"/>
+					<label for="proximity">Proximity to Star</label></li>
+				</ul></form>
 			</div>
 			<div id="list" class="tabcontent">
 				<ul>

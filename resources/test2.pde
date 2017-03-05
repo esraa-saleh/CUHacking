@@ -5,7 +5,7 @@ PMatrix3D cam;
 float[][] stars;
 
 void setup() {
-  size(600, 600, OPENGL);
+  size($('#view').width()-50, $('#view').height()-10, OPENGL);
   frameRate(30);
   sphereDetail(1);
   textFont(createFont("Monaco", 14));
@@ -28,7 +28,7 @@ void draw() {
   PVector x = cam.mult(new PVector(1, 0, 0), new PVector(0, 0, 0));
   PVector y = cam.mult(new PVector(0, 1, 0), new PVector(0, 0, 0));
   PVector d = x.cross(y); d.normalize(); d.mult(r);
-  background(0);
+  background(26, 22, 59);
   noStroke();
   camera(0, 0, 0, d.x, d.y, d.z, y.x, y.y, y.z);
 

@@ -1,14 +1,5 @@
 $(document).ready(function () {
 	displayPlanets(getPlanets());
-/*	$('#list').hide();
-	$('#filter-tab').click(function() {
-		$('#filters').toggle()
-		$('#list').toggle();
-	});
-	$('#list-tab').click(function() {
-		$('#filters').toggle()
-		$('#list').toggle();
-	});*/
 
 	$('#filters-tab').click(function(evt) {
 		openTab(evt, 'filters');
@@ -19,7 +10,7 @@ $(document).ready(function () {
 });
 
 function displayPlanets(planets) {
-	console.log('hello world');
+	console.log(planets);
 }
 
 function getPlanets() {
@@ -36,6 +27,7 @@ function openTab(tab, content) {
 	for (i = 0; i<tabcontent.length; i++) {
 		tabcontent[i].style.display = "none";
 	}
+	console.log('tab');
 
 	tablinks = $('.tablinks');
 	for (i = 0; i<tablinks.length; i++) {
