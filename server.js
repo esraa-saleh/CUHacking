@@ -49,33 +49,33 @@ function route(url, res) {
 			if(q==1){
 				db.all("select * from Planet where temp < 223", function (err, rows) {
 				rows.forEach( function(row) {
-					list[i++] = [row.planetID, row.name, row.temp, row.radius];
+					list[i++] = [row.systemID, row.name, row.temp, row.radius];
 				});
 				res.end(JSON.stringify(list))
 				});
 			}else if(q==2){
 				db.all("select * from Planet where temp > 223 and temp < 273 order by temp desc", function (err, rows) {
 					rows.forEach( function(row) {
-					list[i++] = [row.planetID, row.name, row.temp, row.radius];
+					list[i++] = [row.systemID, row.name, row.temp, row.radius];
 				});
 				res.end(JSON.stringify(list)) }); 
 		 	}else if(q==3){
 				db.all("select * from Planet where temp > 273 and temp < 373 order by temp desc", function (err, rows) {
 					rows.forEach( function(row) {
-					list[i++] = [row.planetID, row.name, row.temp, row.radius];
+					list[i++] = [row.systemID, row.name, row.temp, row.radius];
 				});
 				res.end(JSON.stringify(list)) }); 
 		 	}else if(q==4){
 				db.all("select * from Planet where temp > 373 and temp < 2000 order by temp desc", function (err, rows) {
 					rows.forEach( function(row) {
-					list[i++] = [row.planetID, row.name, row.temp, row.radius];
+					list[i++] = [row.systemID, row.name, row.temp, row.radius];
 				});
 				res.end(JSON.stringify(list))
 				});
 			}else if(q==5){
 				db.all("select * from Planet where temp > 2000 and temp < 4600 order by temp desc", function (err, rows) { 
 					rows.forEach( function(row) { 
-						list[i++] = [row.planetID, row.name, row.temp, row.radius]; 
+						list[i++] = [row.systemID, row.name, row.temp, row.radius]; 
 					}); 
 					res.end(JSON.stringify(list))
 																												            });        }    
