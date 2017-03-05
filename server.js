@@ -26,6 +26,7 @@ function respondToRequest(req, res) {
 
 function route(url, res) {
         var jsstars = [];
+	var list = [];
 	var filename = ROOT+url.pathname;
 	if (url.pathname == '/') {
 		filename = ROOT+'/index.html';
@@ -42,40 +43,45 @@ function route(url, res) {
             res.end(JSON.stringify(jsstars));
             }); 
 	} else if(url.pathname=='/lists'){
-		var list = [];
 		var i = 0;
 		console.log(url.query.aFilter);
 		var q=url.query["aFilter"];
 			if(q==1){
 				db.all("select * from Planet where temp < 223", function (err, rows) {
+					console.log(rows[0]);
 				rows.forEach( function(row) {
-					list[i++] = [row.systemID, row.name, row.temp, row.radius];
+					list[i] = [row.systemId, row.name, row.temp, row.radius];
+					i=1+i;
 				});
 				res.end(JSON.stringify(list))
 				});
 			}else if(q==2){
 				db.all("select * from Planet where temp > 223 and temp < 273 order by temp desc", function (err, rows) {
 					rows.forEach( function(row) {
-					list[i++] = [row.systemID, row.name, row.temp, row.radius];
+					list[i] = [row.systemId, row.name, row.temp, row.radius];
+					i=i+1;
 				});
 				res.end(JSON.stringify(list)) }); 
 		 	}else if(q==3){
 				db.all("select * from Planet where temp > 273 and temp < 373 order by temp desc", function (err, rows) {
 					rows.forEach( function(row) {
-					list[i++] = [row.systemID, row.name, row.temp, row.radius];
+					list[i] = [row.systemId, row.name, row.temp, row.radius];
+					i=i+1;
 				});
 				res.end(JSON.stringify(list)) }); 
 		 	}else if(q==4){
 				db.all("select * from Planet where temp > 373 and temp < 2000 order by temp desc", function (err, rows) {
 					rows.forEach( function(row) {
-					list[i++] = [row.systemID, row.name, row.temp, row.radius];
+					list[i] = [row.systemId, row.name, row.temp, row.radius];
+					i=i+1;
 				});
 				res.end(JSON.stringify(list))
 				});
 			}else if(q==5){
 				db.all("select * from Planet where temp > 2000 and temp < 4600 order by temp desc", function (err, rows) { 
 					rows.forEach( function(row) { 
-						list[i++] = [row.systemID, row.name, row.temp, row.radius]; 
+						list[i] = [row.systemId, row.name, row.temp, row.radius]; 
+						i=i+1;
 					}); 
 					res.end(JSON.stringify(list))
 																												            });        }    

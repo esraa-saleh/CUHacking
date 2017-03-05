@@ -24,7 +24,7 @@ planetID INT,
 FOREIGN KEY(planetID) REFERENCES Planet(planetID),
 FOREIGN KEY(starID) REFERENCES Star(starID))""")
 
-path = "/mnt/data/code/github/CUHacking/data/systems_kepler"
+path = "/home/margaret/CUHACKING/newer-data/CUHacking/data/systems_kepler"
 
 s = 0
 st = 0
@@ -99,6 +99,7 @@ def checkPlanet(star, planet):
             p += 1
 
 def addToPlanet(star, planet):
+    global s
     name = planet['name'][0]
 
     if isinstance(planet['temperature'], OrderedDict):
