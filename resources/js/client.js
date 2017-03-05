@@ -1,4 +1,5 @@
-var jsstars = getPlanets();
+var jsstars = [[5]];
+getPlanets();
 
 $(document).ready(function () {
 	$('#filters-tab').click(function(evt) {
@@ -7,28 +8,14 @@ $(document).ready(function () {
 	$('#list-tab').click(function(evt) {
 		openTab(evt, 'list');
 	});
-	$('input').change(function() {
-		var checked = $(':checked');
-		var filters = {}
-		for (i=0; i<checked.length; i++) {
-			filters[i] = checked[i].value;
-		};
-		$.ajax({
-			url: '/filters', 
-			data: filters,
-			success: function(data) {
-				console.log(data);
-			},
-			dataType: 'application/json',
-		});
-	});
+	countPlanets();
 });
 
-function getPlanets() {
+function getPlanets() {	
 	$.getJSON('/planets', function(data) {
+		console.log("getplanets"+data);
 		jsstars = data;
 	});
-	countPlanets();
 }
 
 function countPlanets() {
@@ -56,4 +43,18 @@ function openTab(tab, content) {
 	
 	$('#'+content).css("display", "block");
 	tab.currentTarget.className += " active";
+}
+
+function drawPoints(id) {
+    var pjs = Processing.getInstanceById(id);
+    var json = $.get("/planets");
+    var data = eval("("+json+")");
+    if(data) {
+        // we know the JSON is an array of points, called "points"
+        for(p=0, end=data.length; p<end; p++) {
+             //var point = data.points[p];
+             consol.log(data[p])
+             //pjs.addPoint(point.x, point.y);
+        }
+    }
 }

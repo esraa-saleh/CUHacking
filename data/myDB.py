@@ -1,5 +1,4 @@
 from collections import OrderedDict
-from PyAstronomy import pyasl
 import xmltodict, json
 import sqlite3
 import os
@@ -25,7 +24,7 @@ planetID INT,
 FOREIGN KEY(planetID) REFERENCES Planet(planetID),
 FOREIGN KEY(starID) REFERENCES Star(starID))""")
 
-path = "/home/flavio/data/code/github/CUHacking/data/systems_kepler"
+path = "/home/margaret/CUHACKING/CUHacking/data/systems_kepler"
 
 s = 0
 st = 0
@@ -166,6 +165,8 @@ for file in os.listdir(path):
         xmlstr = xmlfile.read()
         xmlfile.close()
         o = xmltodict.parse(xmlstr)
-	checkSystem(o['system'])     
+        checkSystem(o['system'])     
 
 
+conn.commit()
+conn.close()

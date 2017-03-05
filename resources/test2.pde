@@ -4,14 +4,24 @@ console.log("processing");
 int r = 1000;
 PMatrix3D cam;
 float[][] stars = jsstars;
+console.log(jsstars);
+
+console.log(stars[0]);
 
 void setup() {
   size($('#view').width(), $('#view').height()-10, OPENGL);
   frameRate(30);
   sphereDetail(1);
   textFont(createFont("Monaco", 14));
-  zoom(r);
   cam = new PMatrix3D();
+  setTimeout(function() {
+    for (int i = 0; i<1000; i++) {
+//	stars[i] = new float[]{ jsstars[i][0], jsstars[i][1], jsstars[i][2]} ;
+    }
+    console.log(jsstars);
+    console.log("stars");
+    console.log(stars);
+  }, 2000);
 }
 
 void draw() {
