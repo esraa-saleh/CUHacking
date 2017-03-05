@@ -3,6 +3,10 @@ var http = require('http');
 var fs = require('fs');
 var mime = require('mime-types');
 var url = require('url');
+
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database('./data/myDB.db');
+
 const ROOT = "./resources";
 
 var server = http.createServer(respondToRequest);
@@ -14,11 +18,9 @@ function respondToRequest(req, res) {
 	var urlObj = url.parse(req.url, true);
 	try {
 		route(urlObj, res);
-		res.end();
 	} catch (err) {
 		console.log(err);
 		pageNotFound(res);
-		res.end();
 	}
 }
 
@@ -28,31 +30,37 @@ function route(url, res) {
 		filename = ROOT+'/index.html';
 		writeFile(filename, res);
 	} else if (url.pathname == '/planets') {
-		res.writeHead(200, {'Content-Type': 'application/json'});
-	var jsstars = [];
-	for (i=0; i<6000; i++) {
-		jsstars[i] = [1000*Math.random, 1000*Math.random, 1000*Math.random];
-	}
-		res.write(JSON.stringify(jsstars));
+	    res.writeHead(200, {'Content-Type': 'application/json'});
+	    var jsstars = [];
+            db.all("SELECT * FROM Systems", function(err, rows) {
+              var r = 1000;
+              for (var j = 0; j < 1000; j++) {
+                var p = rows[2];
+                var t = rows[3]; 
+                jsstars[j] = [r*Math.cos(t)*Math.cos(p), r*Math.cos(t)*Math.sin(p), r*Math.sin(t)];
+              }
+              res.end(JSON.stringify(jsstars));
+            }); 
+	    //for (i=0; i<6000; i++) {
+	    //    jsstars[i] = [1000*Math.random, 1000*Math.random, 1000*Math.random];
+	    //}
 	} else if (url.pathname == '/filters') {
 		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write('<h1>'+url.query+'</h1>');
+		res.end('<h1>'+url.query+'</h1>');
 	} else {
 		writeFile(filename, res);
 	}
-	return res;
 }
 
 function writeFile(filename, res) {
 	res.writeHead(200, {'Content-Type': mime.lookup(filename)});
 	res.write(fs.readFileSync(filename));
 	console.log(filename);
-	return res;
+	res.end();
 }
 
 function pageNotFound(res) {
 	res.writeHead(404, {'Content-Type': 'text/html'});
 	console.log('404');
-	res.write(fs.readFileSync(ROOT+'/404.html'));
-	return res;
+	res.end(fs.readFileSync(ROOT+'/404.html'));
 }
