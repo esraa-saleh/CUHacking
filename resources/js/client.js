@@ -7,14 +7,27 @@ $(document).ready(function () {
 	$('#list-tab').click(function(evt) {
 		openTab(evt, 'list');
 	});
+	$('input').change(function() {
+		var checked = $(':checked');
+		var filters = {}
+		for (i=0; i<checked.length; i++) {
+			filters[i] = checked[i].value;
+		};
+		$.ajax({
+			url: '/filters', 
+			data: filters,
+			success: function(data) {
+				console.log(data);
+			},
+			dataType: 'application/json',
+		});
+	});
 });
 
 function getPlanets() {
 	$.getJSON('/planets', function(data) {
-		console.log(data);
 		jsstars = data;
 	});
-	console.log(jsstars);
 	countPlanets();
 }
 

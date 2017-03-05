@@ -36,7 +36,8 @@ function route(url, res) {
 		res.write(JSON.stringify(jsstars));
 	} else if (url.pathname == '/filters') {
 		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write('<h1>'+url.query+'</h1>');
+		console.log(url.query);
+		res.write('<h1>'+url.pathname+'</h1>');
 	} else {
 		writeFile(filename, res);
 	}
