@@ -4,7 +4,7 @@ console.log("processing");
 int r = 1000;
 PMatrix3D cam;
 float[][] stars = jsstars;
-float[][] filteredStars = selectedJSstars;
+float[][] filteredStars = selectedJSstars; 
 
 
 void setup() {
@@ -16,17 +16,11 @@ void setup() {
 }
 
 void draw() {
-  if (key == 'a') {
-    r += 100;
-    zoom(r);
-  }
-  if (key == 's') {
-    r -= 100;
-    zoom(r);
-  }
   if ($('#view').is(':hover')) {
     cam.rotateX(-(mouseY - height / 2.0) / height / 20);
     cam.rotateY(-(mouseX - width  / 2.0) / width  / 20);
+  } else {
+    filteredStars = selectedJSstars;
   }
   PVector x = cam.mult(new PVector(1, 0, 0), new PVector(0, 0, 0));
   PVector y = cam.mult(new PVector(0, 1, 0), new PVector(0, 0, 0));

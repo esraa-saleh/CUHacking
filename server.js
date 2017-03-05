@@ -14,12 +14,10 @@ server.listen(8080);
 console.log("listening on port 8080");
 
 function respondToRequest(req, res) {
-	console.log(req.method + " :  " + req.url);
 	var urlObj = url.parse(req.url, true);
 	try {
 		route(urlObj, res);
 	} catch (err) {
-		console.log(err);
 		pageNotFound(res);
 	}
 }
@@ -43,12 +41,12 @@ function route(url, res) {
             res.end(JSON.stringify(jsstars));
             }); 
 	} else if(url.pathname=='/lists'){
+	        res.writeHead(200, {'Content-Type': 'application/json'});
 		var i = 0;
 		console.log(url.query.aFilter);
 		var q=url.query["aFilter"];
 			if(q==1){
 				db.all("select * from Planet where temp < 223", function (err, rows) {
-					console.log(rows[0]);
 				rows.forEach( function(row) {
 					list[i] = [row.systemId, row.name, row.temp, row.radius];
 					i=1+i;
