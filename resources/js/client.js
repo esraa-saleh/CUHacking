@@ -1,4 +1,5 @@
 var jsstars = [[5]];
+var selectedJSstars = [[]];
 getPlanets();
 
 $(document).ready(function () {
@@ -26,6 +27,10 @@ function getPlanets() {
 		console.log("getplanets"+data);
 		jsstars = data;
 	});
+}
+
+function displayListItem(item) {
+	var list = $('<h3></h3><ul><li id="tempDislay"</li><li id="radiusDisplay"></li></ul>');
 }
 
 function countPlanets() {
