@@ -8,6 +8,16 @@ $(document).ready(function () {
 	$('#list-tab').click(function(evt) {
 		openTab(evt, 'list');
 	});
+	$('input').change(function() {
+		var parameter = $(':checked')[0].value;
+		console.log(parameter);
+		$.ajax({
+			method: "GET",
+			url: "/lists",
+			data: {"tempurature": parameter},
+			success: function(data) {console.log(data)},
+		});
+	});
 	countPlanets();
 });
 
