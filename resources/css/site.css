@@ -27,7 +27,8 @@ html, body {
 
 #view {
   background-color: #1A163B;
-  display: block; }
+  display: block;
+  box-sizing: border-box; }
 
 #sidebar {
   background-color: #83BCB5;

@@ -5,7 +5,7 @@ PMatrix3D cam;
 float[][] stars;
 
 void setup() {
-  size($('#view').width()-50, $('#view').height()-10, OPENGL);
+  size($('#view').width(), $('#view').height()-10, OPENGL);
   frameRate(30);
   sphereDetail(1);
   textFont(createFont("Monaco", 14));
@@ -23,8 +23,10 @@ void draw() {
     r -= 100;
     zoom(r);
   }
-  cam.rotateX(-(mouseY - height / 2.0) / height / 20);
-  cam.rotateY(-(mouseX - width  / 2.0) / width  / 20);
+  if ($('#view').is(':hover')) {
+    cam.rotateX(-(mouseY - height / 2.0) / height / 20);
+    cam.rotateY(-(mouseX - width  / 2.0) / width  / 20);
+  }
   PVector x = cam.mult(new PVector(1, 0, 0), new PVector(0, 0, 0));
   PVector y = cam.mult(new PVector(0, 1, 0), new PVector(0, 0, 0));
   PVector d = x.cross(y); d.normalize(); d.mult(r);

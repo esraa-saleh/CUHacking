@@ -45,6 +45,7 @@ html, body {
 #view {
 	background-color: $darkest;
 	display: block;
+	box-sizing: border-box;
 }
 
 #sidebar {
