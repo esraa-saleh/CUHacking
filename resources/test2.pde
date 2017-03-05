@@ -4,9 +4,8 @@ console.log("processing");
 int r = 1000;
 PMatrix3D cam;
 float[][] stars = jsstars;
-console.log(jsstars);
+float[][] filteredStars = selectedJSstars;
 
-console.log(stars[0]);
 
 void setup() {
   size($('#view').width(), $('#view').height()-10, OPENGL);
@@ -14,14 +13,6 @@ void setup() {
   sphereDetail(1);
   textFont(createFont("Monaco", 14));
   cam = new PMatrix3D();
-  setTimeout(function() {
-    for (int i = 0; i<1000; i++) {
-//	stars[i] = new float[]{ jsstars[i][0], jsstars[i][1], jsstars[i][2]} ;
-    }
-    console.log(jsstars);
-    console.log("stars");
-    console.log(stars);
-  }, 2000);
 }
 
 void draw() {
@@ -47,24 +38,18 @@ void draw() {
 
   for(int i = 0; i < stars.length; i++) {
     pushMatrix();
+    color cl = color(255,255,255);
+    for(int j=0; j<filteredStars.length; j++) {
+      if (filteredStars[j][0]-1 == i) cl = color(255,0,0);
+    }
     translate(stars[i][0], stars[i][1], stars[i][2]);
+    fill(cl);
     sphere(5);
     popMatrix();
   }
+ 
   stroke(255);
   line(width / 2 - 9, height / 2 - 0, width / 2 + 8, height / 2 + 0);
   line(width / 2 - 0, height / 2 - 9, width / 2 + 0, height / 2 + 8);
 } 
 
-void zoom(R) {
-  for(int i = 0; i < stars.length; i++) {
-    float p = random(-PI, PI);
-    float t = asin(random(-R, R) / R);
-    stars[i] = new float[] {
-	R * cos(t) * cos(p),
-	R * cos(t) * sin(p),
-	R * sin(t)
-    };
-  }
-
-}

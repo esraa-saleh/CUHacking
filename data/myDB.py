@@ -9,7 +9,7 @@ cursor = conn.cursor()
 
 #Relational tables
 cursor.execute("CREATE TABLE Star (starID INTEGER PRIMARY KEY, name STRING, radius FLOAT, temp FLOAT)")
-cursor.execute("CREATE TABLE Planet (planetID INTEGER PRIMARY KEY, name STRING, period FLOAT, radius FLOAT, temp FLOAT)")
+cursor.execute("CREATE TABLE Planet (planetID INTEGER PRIMARY KEY, systemId INT, name STRING, period FLOAT, radius FLOAT, temp FLOAT)")
 cursor.execute("CREATE TABLE Systems (systemID INTEGER PRIMARY KEY, name STRING, decLat FLOAT, ascLong FLOAT, dist FLOAT)")
 
 cursor.execute("""CREATE TABLE SystemStar (systemStarID INTEGER PRIMARY KEY,
@@ -24,7 +24,7 @@ planetID INT,
 FOREIGN KEY(planetID) REFERENCES Planet(planetID),
 FOREIGN KEY(starID) REFERENCES Star(starID))""")
 
-path = "/home/margaret/CUHACKING/CUHacking/data/systems_kepler"
+path = "/home/margaret/CUHACKING/newer-data/CUHacking/data/systems_kepler"
 
 s = 0
 st = 0
@@ -99,6 +99,7 @@ def checkPlanet(star, planet):
             p += 1
 
 def addToPlanet(star, planet):
+    global s
     name = planet['name'][0]
 
     if isinstance(planet['temperature'], OrderedDict):
@@ -116,9 +117,9 @@ def addToPlanet(star, planet):
     else:
         period = str(planet['period'])
 
-    values = "'" + name + "'," + period + "," + radius + "," + temp
+    values = str(s) + ",'" + name + "'," + period + "," + radius + "," + temp
 
-    cursor.execute("INSERT INTO Planet(name, period, radius, temp) VALUES("+values+")")
+    cursor.execute("INSERT INTO Planet(systemID, name, period, radius, temp) VALUES("+values+")")
     cursor.execute("INSERT INTO StarPlanet(starID, planetID) VALUES("+ str(st) + "," + str(p) + ")")
     return;
 
