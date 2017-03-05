@@ -29,7 +29,11 @@ function route(url, res) {
 		writeFile(filename, res);
 	} else if (url.pathname == '/planets') {
 		res.writeHead(200, {'Content-Type': 'application/json'});
-		res.write(JSON.stringify([[0, 5, 10, 15][1, 2, 3, 4][6 7 8 9]]));
+	var jsstars = [];
+	for (i=0; i<6000; i++) {
+		jsstars[i] = [1000*Math.random, 1000*Math.random, 1000*Math.random];
+	}
+		res.write(JSON.stringify(jsstars));
 	} else if (url.pathname == '/filters') {
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write('<h1>'+url.query+'</h1>');

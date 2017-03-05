@@ -1,16 +1,15 @@
 import processing.opengl.*;
+console.log("processing");
 
 int r = 1000;
 PMatrix3D cam;
-float[][] stars;
+float[][] stars = jsstars;
 
 void setup() {
   size($('#view').width(), $('#view').height()-10, OPENGL);
   frameRate(30);
   sphereDetail(1);
   textFont(createFont("Monaco", 14));
-  stars = jsstars;
-  console.log(stars);
   zoom(r);
   cam = new PMatrix3D();
 }

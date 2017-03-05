@@ -1,7 +1,6 @@
-var jsstars = [[1 2 3][4 5 6][7 8 9]];
+var jsstars = getPlanets();
 
 $(document).ready(function () {
-	getPlanets();
 	$('#filters-tab').click(function(evt) {
 		openTab(evt, 'filters');
 	});
@@ -11,15 +10,16 @@ $(document).ready(function () {
 });
 
 function getPlanets() {
-	jsstars = $.get('/planets', function(data) {
+	$.getJSON('/planets', function(data) {
 		console.log(data);
+		jsstars = data;
 	});
+	console.log(jsstars);
 	countPlanets();
 }
 
 function countPlanets() {
 	var list = $('#list ul li');
-	console.log(list);
 	$('#list-tab span').html(" ("+list.length+")");
 	if (list.length==1) {
 		$('#list-tab a').html("Planet");
@@ -35,11 +35,9 @@ function openTab(tab, content) {
 	for (i = 0; i<tabcontent.length; i++) {
 		tabcontent[i].style.display = "none";
 	}
-	console.log('tab');
 
 	tablinks = $('.tablinks');
 	for (i = 0; i<tablinks.length; i++) {
-		console.log($('.tablinks')[i]);
 		$('.tablinks').removeClass("active");
 	}
 	
