@@ -1,22 +1,36 @@
 import processing.opengl.*;
-import processing.net.*; 
+console.log("processing");
 
-PMatrix3D cam;
-float[][] stars;
 int r = 1000;
-int i = 0;
+PMatrix3D cam;
+float[][] stars = jsstars;
+
+console.log(stars[0]);
 
 void setup() {
   size($('#view').width(), $('#view').height()-10, OPENGL);
   frameRate(30);
   sphereDetail(1);
   textFont(createFont("Monaco", 14));
-  //zoom(r);
-  stars = new float[1000][3];
   cam = new PMatrix3D();
+  setTimeout(function() {
+    for (int i = 0; i<1000; i++) {
+	stars[i] = new float[] { jsstars[i][0], jsstars[i][1], jsstars[i][2]} ;
+    }
+    console.log("stars");
+    console.log(stars);
+  }, 2000);
 }
 
 void draw() {
+  if (key == 'a') {
+    r += 100;
+    zoom(r);
+  }
+  if (key == 's') {
+    r -= 100;
+    zoom(r);
+  }
   if ($('#view').is(':hover')) {
     cam.rotateX(-(mouseY - height / 2.0) / height / 20);
     cam.rotateY(-(mouseX - width  / 2.0) / width  / 20);
@@ -40,8 +54,15 @@ void draw() {
   line(width / 2 - 0, height / 2 - 9, width / 2 + 0, height / 2 + 8);
 } 
 
-void addpoint(x, y, z) {
-   if (i >= start.length) return;
-   stars[i] = new float[] {x,y,z};
-   i++;
+void zoom(R) {
+  for(int i = 0; i < stars.length; i++) {
+    float p = random(-PI, PI);
+    float t = asin(random(-R, R) / R);
+    stars[i] = new float[] {
+	R * cos(t) * cos(p),
+	R * cos(t) * sin(p),
+	R * sin(t)
+    };
+  }
+
 }

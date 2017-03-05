@@ -12,27 +12,12 @@
 </head>
 
 <body>
+	<script>
+		var x = 5;	
+	</script>
 	<div class="pure-g">
 		<div id="view" class="pure-u-4-5">
 			<canvas id="test2" data-processing-sources="test2.pde"></canvas>
-            <script type="text/javascript">
-                var pjs = Processing.getInstanceById("test2");
-                if (!pjs) {
-                    var tid = 0;
-                    tid = setInterval(function() {
-                        pjs = Processing.getInstanceById("test2");
-                        if (pjs) clearInterval(tid);
-                    }, 500);
-                }
-                
-                var json = $.get("/planets", function(data) {
-                    for (i=0, end=data.length; i < end; i++) {
-                        console.log(data[i]);
-                        pjs.addpoint(1, 1, 1000);
-                    }
-	            });
-                
-            </script>
 		</div>
 
 		<div id="sidebar" class="pure-u-1-5">

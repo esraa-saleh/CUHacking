@@ -1,4 +1,5 @@
-//var jsstars = getPlanets();
+var jsstars = [[5]];
+getPlanets();
 
 $(document).ready(function () {
 	$('#filters-tab').click(function(evt) {
@@ -7,15 +8,14 @@ $(document).ready(function () {
 	$('#list-tab').click(function(evt) {
 		openTab(evt, 'list');
 	});
+	countPlanets();
 });
 
-function getPlanets() {
+function getPlanets() {	
 	$.getJSON('/planets', function(data) {
 		console.log(data);
 		jsstars = data;
 	});
-	console.log("hello" + jsstars);
-	countPlanets();
 }
 
 function countPlanets() {
