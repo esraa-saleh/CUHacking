@@ -1,0 +1,33 @@
+{
+  "name": "exoplanetsmap",
+  "version": "1.0.0",
+  "description": "An interactive visualization of the Open Exoplanet Catalogue",
+  "main": "server.js",
+  "dependencies": {
+    "mime-types": "^2.1.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esraa-saleh/CUHacking.git"
+  },
+  "keywords": [
+    "Exoplanets",
+    "Space",
+    "Astronomy",
+    "Data",
+    "Visualization",
+    "3D",
+    "Visualization"
+  ],
+  "author": "Margaret, Flavio, Esra'a",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esraa-saleh/CUHacking/issues"
+  },
+  "homepage": "https://github.com/esraa-saleh/CUHacking#readme"
+}
