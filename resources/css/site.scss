@@ -48,6 +48,7 @@ html, body {
 }
 
 #sidebar {
+	max-height: 100%;
 	background-color: $blue;
 	display: block;
 	border-left: 1em solid $red;
@@ -74,6 +75,18 @@ html, body {
 }
 
 #list {
+	overflow-y: hidden;
+	max-height: 100%;
 	display: none;
+	ul {
+		overflow-y: auto;
+		overflow-x: hidden;
+		li {
+			overflow-x: hidden;
+		}
+		h3 {
+			font-size: 1em;
+		}
+	}
 }
 

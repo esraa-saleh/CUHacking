@@ -31,6 +31,7 @@ html, body {
   box-sizing: border-box; }
 
 #sidebar {
+  max-height: 100%;
   background-color: #83BCB5;
   display: block;
   border-left: 1em solid #FA4A50;
@@ -51,12 +52,15 @@ html, body {
     background-color: #FCF398; }
 
 #list {
+  overflow-y: hidden;
+  max-height: 100%;
   display: none; }
-
-#loading {
-  height: 100em;
-  width: 100%;
-  background-color: white;
-  z-index: 10; }
+  #list ul {
+    overflow-y: auto;
+    overflow-x: hidden; }
+    #list ul li {
+      overflow-x: hidden; }
+    #list ul h3 {
+      font-size: 1em; }
 
 /*# sourceMappingURL=site.css.map */
