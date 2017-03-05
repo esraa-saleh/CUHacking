@@ -20,7 +20,7 @@ html, body {
       text-decoration: none;
       color: #1A163B; }
     #tabs li:hover {
-      background-color: #FCF398; }
+      background-color: #C0E2C3; }
 
 .active {
   background-color: #FCF398; }
@@ -52,5 +52,11 @@ html, body {
 
 #list {
   display: none; }
+
+#loading {
+  height: 100em;
+  width: 100%;
+  background-color: white;
+  z-index: 10; }
 
 /*# sourceMappingURL=site.css.map */

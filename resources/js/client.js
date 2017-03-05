@@ -1,24 +1,20 @@
-$(document).ready(function () {
-	displayPlanets(getPlanets());
+var jsstars = [[1 2 3][4 5 6][7 8 9]];
 
+$(document).ready(function () {
+	getPlanets();
 	$('#filters-tab').click(function(evt) {
 		openTab(evt, 'filters');
 	});
 	$('#list-tab').click(function(evt) {
 		openTab(evt, 'list');
 	});
-	countPlanets();
 });
 
-function displayPlanets(planets) {
-	console.log(planets);
-}
-
 function getPlanets() {
-	$.get('/planets', function(data) {
+	jsstars = $.get('/planets', function(data) {
 		console.log(data);
 	});
-	
+	countPlanets();
 }
 
 function countPlanets() {

@@ -9,7 +9,8 @@ void setup() {
   frameRate(30);
   sphereDetail(1);
   textFont(createFont("Monaco", 14));
-  stars = new float[1500][3];
+  stars = jsstars;
+  console.log(stars);
   zoom(r);
   cam = new PMatrix3D();
 }
@@ -41,7 +42,6 @@ void draw() {
     sphere(5);
     popMatrix();
   }
-  camera();
   stroke(255);
   line(width / 2 - 9, height / 2 - 0, width / 2 + 8, height / 2 + 0);
   line(width / 2 - 0, height / 2 - 9, width / 2 + 0, height / 2 + 8);
