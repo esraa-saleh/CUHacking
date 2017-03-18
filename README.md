@@ -1,4 +1,4 @@
-# CUHacking
+# ExoplanetExplorer
 This is a project that was started at the CUHacking hackathon.
 For the exoplanet explorer project, all data used was from the open exoplanet catalogue. 
 This data can be accessed through their github repository and browsed on their website  at: http://openexoplanetcatalogue.com/
