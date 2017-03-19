@@ -1,6 +1,7 @@
 # ExoplanetExplorer
 This is a project that was started at the CUHacking hackathon.
 Here is the DevPost link: https://devpost.com/software/cuhacking-ct1o9n
+
 For the exoplanet explorer project, all data used was from the open exoplanet catalogue. 
 This data can be accessed through their github repository and browsed on their website  at: http://openexoplanetcatalogue.com/
 
